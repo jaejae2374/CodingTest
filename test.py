@@ -1,1 +1,1 @@
-print("AAAAA" < "AAAE" )
+print(str(bin(4))[2:])
