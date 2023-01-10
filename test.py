@@ -1,1 +1,1 @@
-print(str(bin(4))[2:])
+print("3people".capitalize())
