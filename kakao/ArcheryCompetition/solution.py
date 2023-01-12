@@ -44,6 +44,3 @@ def solution(n, info):
     if peach_total >= ryan_total:
         return [-1]
     return answer
-
-print(solution(10, [0, 0, 0, 0, 0, 0, 0, 0, 3, 4, 3]))
-# [1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 2]
