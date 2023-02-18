@@ -32,15 +32,16 @@ def solution(n, info):
             break
     if n > 0:
         answer[-1] += n
-    ryan_total = 0
+        
+    ryan_total = 0; peach_total = 0
     for idx, cnt in enumerate(answer):
         if cnt:
-            ryan_total+=(10-idx)
-    peach_total = 0
-    for idx, cnt in enumerate(zip(info ,answer)):
-        if cnt[0]:
-            if cnt[0] - cnt[1] >= 0:
+            ryan_total+= 10-idx
+        else:
+            if info[idx]:
                 peach_total += 10-idx
+    
     if peach_total >= ryan_total:
         return [-1]
     return answer
+
