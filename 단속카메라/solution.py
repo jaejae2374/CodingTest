@@ -8,3 +8,5 @@ def solution(routes):
             std = end
         std = min(std, end)
     return answer
+
+print([[-20,-15], [-14,-5], [-18,-13], [-5,-3]])
