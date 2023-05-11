@@ -1,18 +1,37 @@
-from math import sqrt
-def solution(r1, r2):
-    answer = 0
-    r1, r2 = max(r1, r2), min(r1, r2)
-    start = -1*r1
-    d1 = r1**2; d2 = r2**2
-    print(int(sqrt(d2-(2**2))))
-    for i in range(start, 0):
-        for j in range(int(sqrt(d2-(2**2)))+1, (-1*start)+1):
-            d = i**2+j**2
-            if d>d1:
-                break
-            else:
-                answer+=1
-            
-    return answer*4 + ((r1-r2)+1)*4
+from math import inf
 
-solution(2, 3)
+def get_digit(number):
+    cnt = 0
+    while (number>0):
+        number//=10
+        cnt+=1
+    
+    return cnt
+
+def search(N, number, cnt):
+    if cnt>8:
+        return inf
+    if number==0:
+        return cnt
+    l = get_digit(number)
+    if number==int(f"{N}"*l):
+        return l+cnt
+    print(number, cnt)
+    results = []
+    results.append(search(N, number*N, cnt+1))
+    if number%N==0:
+        results.append(search(N, number//N, cnt+1))
+    results.append(search(N, number+N, cnt+1))
+    if number-N>0:
+        results.append(search(N, number-N, cnt+1))
+    
+    return min(results)
+    
+
+def solution(N, number):
+    # if 5==int(f"{5}"*1): return -1
+    answer = search(N, number, 0)
+    if answer>8: return -1
+    return answer
+
+print(solution(5, 12))
