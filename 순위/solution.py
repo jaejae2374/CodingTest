@@ -13,13 +13,10 @@ def solution(n, results):
             for e in range(n):
                 graph_1[s][e] = min(graph_1[s][e], graph_1[s][k]+graph_1[k][e])
                 graph_2[s][e] = min(graph_2[s][e], graph_2[s][k]+graph_2[k][e])
-    for i in range(n):
-        for j in range(n):
-            graph_1[i][j] += graph_2[i][j]
     answer=0
     for i in range(n):
         for j in range(n):
-            if graph_1[i][j] == 202:
+            if graph_1[i][j]==101 and graph_2[i][j]==101:
                 break
         else:
             answer+=1
