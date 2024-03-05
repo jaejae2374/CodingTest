@@ -1,30 +1,16 @@
 from collections import deque
 
 def solution(numbers):
-    
-    answer = deque()
-    answer.appendleft(-1)
-    
-    for i in range(-2, -len(numbers)-1, -1):
-        before_big = answer[0]
-        before = numbers[i+1]
-        n = numbers[i]
-        if n < before:
-            answer.appendleft(before)
-        elif n > before:
-            if before_big == -1:
-                answer.appendleft(before_big)
-            else:
-                for b in answer:
-                    if b == -1:
-                        answer.appendleft(-1)
-                        break
-                    if b > n:
-                        answer.appendleft(b)
-                        break
-                else:
-                    answer.appendleft(-1)
+    stack = deque()
+    result = [-1] * len(numbers)
+    stack.appendleft([numbers[0], 0])
+    for i in range(1, len(numbers)):
+        if stack[0][0]>=numbers[i]:
+            stack.appendleft([numbers[i], i])
         else:
-            answer.appendleft(before_big)
-    
-    return list(answer)
+            while stack and stack[0][0]<numbers[i]:
+                _, idx = stack.popleft()
+                result[idx]=numbers[i]
+            stack.appendleft([numbers[i], i])
+
+    return result
