@@ -6,24 +6,28 @@ def solution(land):
         oils = 0
         queue = deque()
         queue.append([i, j])
+        land[i][j]=0
         tops = defaultdict(lambda: inf)
         while queue:
             x, y = queue.popleft()
-            land[x][y] = 0
             tops[y] = min(tops[y], x)
             oils+=1
             # 상
             if x>=1 and land[x-1][y]==1:
                 queue.append([x-1, y])
+                land[x-1][y] = 0
             # 하
             if x<rows-1 and land[x+1][y]==1:
                 queue.append([x+1, y])
+                land[x+1][y] = 0
             # 좌
             if y>=1 and land[x][y-1]==1:
                 queue.append([x, y-1])
+                land[x][y-1] = 0
             # 우
             if y<cols-1 and land[x][y+1]==1:
                 queue.append([x, y+1])
+                land[x][y+1] = 0
         for y, x in tops.items():
             land[x][y] = oils
             
@@ -40,11 +44,7 @@ def solution(land):
                 land = bfs(i, j, rows, cols, land)
                 visited[f"{i},{j}"] = True
             if land[i][j]>0:
-                print(i, j)
                 oils+=land[i][j]
         answer = max(answer, oils)
-        print(f"oils: {oils}")
-        print("=====================")
         
     return answer
-solution(([[0, 0, 0, 1, 1, 1, 0, 0], [0, 0, 0, 0, 1, 1, 0, 0], [1, 1, 0, 0, 0, 1, 1, 0], [1, 1, 1, 0, 0, 0, 0, 0], [1, 1, 1, 0, 0, 0, 1, 1]]))
