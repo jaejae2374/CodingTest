@@ -1,0 +1,43 @@
+# 순열 (중복x, 순서o)
+from itertools import permutations
+permutations(집합, n)
+
+# 조합 (중복x, 순서x)
+from itertools import combinations
+combinations(집합, n)
+
+# 중복순열 (중복o, 순서o)
+from itertools import product
+product(집합, repeat=n)
+product(집합들) # 집합들 중에서 한개씩 pick!
+
+# 중복조합 (중복o, 순서x)
+from itertools import combinations_with_replacement
+combinations_with_replacement(집합, n)
+
+
+# 이분 탐색으로 정렬된 집합에서 특정 수 인덱스 찾기
+from bisect import bisect_left, bisect_right
+bisect_left(집합, n) # n의 첫 위치
+bisect_right(집합, n) # n의 마지막 위치
+
+# heapq (우선순위 큐)
+import heapq
+heapq.heappush(list, item)
+heapq.heappop(list)
+heapq.heapify(list)
+list[0] # 제일 작은 값
+heapq.heappush(max_heap, (-item, item)) # 최대 heap
+heapq.nlargest(n, iterable, key=None) # 테스트 필요 (key)
+heapq.nsmallest(n, iterable, key=None) # 테스트 필요 (key)
+
+
+# deque
+from collections import deque
+q = deque()
+q.popleft(); q.pop(); q.appendleft(); q.append()
+
+# defaultdict
+from collections import defaultdict
+
+
