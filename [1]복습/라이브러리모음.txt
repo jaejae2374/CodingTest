@@ -45,3 +45,15 @@ ord('A')
 # regex
 import re
 https://nachwon.github.io/regular-expressions/
+
+# zip_longest
+from itertools import zip_longest
+zip_longest(x, y, fillvalue=0)
+
+# eval (문자열 그대로 연산)
+eval("1+1") # 2
+
+# Counter (most_common)
+from collections import Counter
+c = Counter()
+c.most_common(5) # 가장 개수가 많은 5개
